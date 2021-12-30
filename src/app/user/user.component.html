@@ -5,15 +5,11 @@
             <th>E-mail</th>
             <th>City</th>
         </tr>
-        <tr>
-            <td>aaa</td>
-            <td>aaa</td>
-            <td>aaa</td>
-        </tr>
-        <tr>
-            <td>bbb</td>
-            <td>bbb</td>
-            <td>bbb</td>
+
+       <tr *ngFor="let user of allUsers" routerLink="/user/ + user.customIdName">
+            <td>{{ user.firstName }} {{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.city }}</td>
         </tr>
     </table>
 </mat-card>
