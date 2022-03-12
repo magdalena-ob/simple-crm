@@ -4,7 +4,7 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Task Name</mat-label>
-                <input matInput placeholder="Give this task a name">
+                <input matInput placeholder="Give this task a name" [(ngModel)]="task.taskName">
                 <!--<mat-hint>Hint</mat-hint>-->
             </mat-form-field>
         </div>
@@ -12,8 +12,8 @@
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Who is responsible for this task?</mat-label>
                 <mat-select>
-                    <mat-option *ngFor="let user of allUsers" [value]="user.firstName">
-                        {{user.firstName}} {{user.lastName}}
+                    <mat-option *ngFor="let user of allUsers" [value]="user.firstName" ngDefaultControl [(ngModel)]="userName">
+                        {{user.firstName}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -21,7 +21,7 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Status</mat-label>
-                <select matNativeControl required>
+                <select matNativeControl required [(ngModel)]="task.status">
                     <option value="open">Open</option>
                     <option value="inProgress">In progress</option>
                     <option value="done">Done</option>
@@ -31,7 +31,7 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Due date</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>

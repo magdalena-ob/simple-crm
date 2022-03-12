@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Task } from 'src/models/task.class';
 
-interface User {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -13,29 +10,37 @@ interface User {
   styleUrls: ['./dialog-add-task.component.scss']
 })
 export class DialogAddTaskComponent implements OnInit {
-  allUsers :any = [];
-  
-  selectedValue: string | undefined;
+  task = new Task();
+  dueDate!: Date;
+  userName!: string;
+  allUsers: any = [];
+  userId: any = '';
 
-  users: User[] = [
-    {value: 'User1', viewValue: 'User1'},
-    {value: 'User2', viewValue: 'User2'},
-    {value: 'User2', viewValue: 'User3'},
-  ];
 
 
   constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.firestore
-    .collection('users')
-    .valueChanges({idField: 'customIdName'})
-    .subscribe((changes: any) => {
-      this.allUsers = changes;
-    });
+      .collection('users')
+      .valueChanges({ idField: 'customIdName' })
+      .subscribe((changes: any) => {
+        this.allUsers = changes;
+      });
+
+      
   }
 
   saveTask() {
+    this.task.dueDate = this.dueDate.getTime();
+    this.task.userName = this.userName;
+    this.firestore
+      .collection('tasks')
+      .add(this.task.toJSON())
+      .then((result: any) => {
+        console.log('finished adding task ', result);
+        this.dialogRef.close();
+      });
 
   }
 
