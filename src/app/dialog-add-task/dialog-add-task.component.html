@@ -1,0 +1,44 @@
+<div class="dialog-container">
+    <h1 mat-dialog-title>Add Task</h1>
+    <div mat-dialog-content>
+        <div>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Task Name</mat-label>
+                <input matInput placeholder="Give this task a name">
+                <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Who is responsible for this task?</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let user of allUsers" [value]="user.firstName">
+                        {{user.firstName}} {{user.lastName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Status</mat-label>
+                <select matNativeControl required>
+                    <option value="open">Open</option>
+                    <option value="inProgress">In progress</option>
+                    <option value="done">Done</option>
+                </select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Due date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close()">Cancle</button>
+        <button mat-button (click)="saveTask()" cdkFocusInitial>Save</button>
+    </div>
+</div>
