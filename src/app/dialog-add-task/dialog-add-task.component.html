@@ -11,9 +11,14 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Who is responsible for this task?</mat-label>
-                <mat-select>
+                <!--<mat-select>
                     <mat-option *ngFor="let user of allUsers" [value]="user.firstName" ngDefaultControl [(ngModel)]="userName">
                         {{user.firstName}}
+                    </mat-option>
+                </mat-select>-->
+                <mat-select [(ngModel)]="selectedValue" name="user">
+                    <mat-option *ngFor="let user of allUsers" [value]="user.firstName">
+                        {{user.firstName}} {{user.lastName}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

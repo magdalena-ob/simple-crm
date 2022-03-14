@@ -3,6 +3,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Task } from 'src/models/task.class';
 
+interface User {
+  firstName: string;
+  lastName: string;
+}
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -15,6 +19,7 @@ export class DialogAddTaskComponent implements OnInit {
   userName!: string;
   allUsers: any = [];
   userId: any = '';
+  selectedValue!: string;
 
 
 
@@ -33,7 +38,7 @@ export class DialogAddTaskComponent implements OnInit {
 
   saveTask() {
     this.task.dueDate = this.dueDate.getTime();
-    this.task.userName = this.userName;
+    this.task.userName = this.selectedValue;
     this.firestore
       .collection('tasks')
       .add(this.task.toJSON())
