@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.firestore
       .collection('tasks')
-      .valueChanges()
+      .valueChanges({idField: 'taskID'})
       .subscribe((changes) => {
         this.allTasks = changes;
         console.log('all tasks are ', this.allTasks);

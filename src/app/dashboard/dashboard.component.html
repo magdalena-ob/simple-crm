@@ -6,7 +6,7 @@
             <th>Status</th>
         </tr>
 
-       <tr *ngFor="let task of allTasks">
+       <tr *ngFor="let task of allTasks" [routerLink]="['/dashboard/' + task.taskID]">
             <td>{{task.taskName}}</td>
             <td>{{task.userName}}</td>
             <td>{{task.status}}</td>
