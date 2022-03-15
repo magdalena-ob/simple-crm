@@ -11,13 +11,8 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Who is responsible for this task?</mat-label>
-                <!--<mat-select>
-                    <mat-option *ngFor="let user of allUsers" [value]="user.firstName" ngDefaultControl [(ngModel)]="userName">
-                        {{user.firstName}}
-                    </mat-option>
-                </mat-select>-->
                 <mat-select [(ngModel)]="selectedValue" name="user">
-                    <mat-option *ngFor="let user of allUsers" [value]="user.firstName">
+                    <mat-option *ngFor="let user of allUsers" [value]="user.firstName + ' ' + user.lastName">
                         {{user.firstName}} {{user.lastName}}
                     </mat-option>
                 </mat-select>
@@ -39,7 +34,7 @@
                 <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+            </mat-form-field>
         </div>
     </div>
     <div mat-dialog-actions>

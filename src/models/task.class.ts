@@ -18,7 +18,7 @@ export class Task {
     public toJSON() {       
         return {
             taskName: this.taskName,
-            userName: this.userName,
+            userFirstName: this.userName,
             email: this.email,
             dueDate: this.dueDate,
             status: this.status,
