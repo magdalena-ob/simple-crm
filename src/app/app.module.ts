@@ -32,6 +32,7 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
 import { MatSelectModule } from '@angular/material/select';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select';
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserComponent,
-    DialogAddTaskComponent
+    DialogAddTaskComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,
