@@ -2,14 +2,14 @@
     <table class="user-table">
         <tr>
             <th>Task</th>
-            <th>User</th>
+            <th>Responsible</th>
             <th>Status</th>
         </tr>
 
-       <tr>
-            <td>Aufgabe 1</td>
-            <td>User1</td>
-            <td>Erledigt</td>
+       <tr *ngFor="let task of allTasks">
+            <td>{{task.taskName}}</td>
+            <td>{{task.userName}}</td>
+            <td>{{task.status}}</td>
         </tr>
     </table>
 </mat-card>
