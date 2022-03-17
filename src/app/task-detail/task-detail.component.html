@@ -1,1 +1,55 @@
-{{task.taskName}}
+<mat-card class="user-detail-header">
+    <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="userMenu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="editTaskName()">edit</button>
+    </mat-menu>
+    <div class="user-details">
+        <h2>{{task.taskName}}</h2>
+    </div>
+</mat-card>
+<mat-card class="mt-32">
+    <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editTaskInfo()">edit</button>
+    </mat-menu>
+    <mat-card-title>Info</mat-card-title>
+    <mat-card-content>
+        <table>
+            <tr>
+                <td>Responsible</td>
+                <td class="pdl-32"><b>{{ task.userName }}</b></td>
+            </tr>
+            <tr>
+                <td> Due date</td>
+                <td class="pdl-32"><b>{{ task.dueDate | date:'EEEE, MMMM d, y' }}</b></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td class="pdl-32"><b>{{ task.status }}</b></td>
+            </tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+<mat-card class="mt-32">
+    <mat-card-title>Notes</mat-card-title>
+    <mat-card-content>
+        <form>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Leave a note</mat-label>
+                <textarea matInput placeholder="Share your info about this task with your colleagues"></textarea>
+            </mat-form-field>
+        </form>
+        <div class="pin-btn">
+            <button mat-raised-button color="primary" (click)="saveNote()">Pin your note</button>
+        </div>
+        <mat-list role="list">
+            <mat-list-item [ngStyle]="{'background-color': colors[bgColor]}" role="listitem">Item 1 <mat-icon class="delete-icon"class="delete-icon">delete</mat-icon></mat-list-item>
+            <mat-list-item [ngStyle]="{'background-color': colors[bgColor]}"role="listitem">Item 2 <mat-icon class="delete-icon">delete</mat-icon></mat-list-item>
+            <mat-list-item [ngStyle]="{'background-color': colors[bgColor]}"role="listitem">Item 3 <mat-icon class="delete-icon">delete</mat-icon></mat-list-item>
+          </mat-list>
+    </mat-card-content>
+</mat-card>

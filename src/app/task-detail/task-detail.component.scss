@@ -1,0 +1,43 @@
+.user-detail-header {
+    min-height: 92px;
+    background-color: #da1958;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+}
+
+.user-details {
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100px;
+
+    h2 {
+        margin-bottom: -18px;
+    }
+}
+
+.pin-right-upper-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.pin-btn {
+    display: flex;
+    justify-content: end;
+}
+
+mat-list-item {
+    margin-top: 16px !important;
+    border-radius: 4px !important;
+    position: relative;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+}

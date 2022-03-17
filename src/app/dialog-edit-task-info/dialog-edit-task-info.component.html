@@ -1,13 +1,6 @@
 <div class="dialog-container">
-    <h1 mat-dialog-title>Add Task</h1>
+    <h1 mat-dialog-title>Task Info</h1>
     <div mat-dialog-content>
-        <div>
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Task Name</mat-label>
-                <input matInput placeholder="Give this task a name" [(ngModel)]="task.taskName">
-                <!--<mat-hint>Hint</mat-hint>-->
-            </mat-form-field>
-        </div>
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Who is responsible for this task?</mat-label>
@@ -39,6 +32,6 @@
     </div>
     <div mat-dialog-actions>
         <button mat-button (click)="dialogRef.close()">Cancle</button>
-        <button mat-button (click)="saveTask()" cdkFocusInitial>Save</button>
+        <button mat-button (click)="saveTaskInfo()" cdkFocusInitial>Save</button>
     </div>
 </div>

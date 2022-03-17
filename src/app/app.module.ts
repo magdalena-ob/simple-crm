@@ -33,6 +33,9 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
 import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
 import { MatSelectModule } from '@angular/material/select';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { MatListModule } from '@angular/material/list';
+import { DialogEditTaskNameComponent } from './dialog-edit-task-name/dialog-edit-task-name.component';
+import { DialogEditTaskInfoComponent } from './dialog-edit-task-info/dialog-edit-task-info.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
     DialogEditAddressComponent,
     DialogEditUserComponent,
     DialogAddTaskComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    DialogEditTaskNameComponent,
+    DialogEditTaskInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,8 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
     MatProgressBarModule,
     MatCardModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

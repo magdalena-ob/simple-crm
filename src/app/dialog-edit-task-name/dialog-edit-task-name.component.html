@@ -1,0 +1,15 @@
+<div class="dialog-container">
+    <h1 mat-dialog-title>Task name</h1>
+    <div mat-dialog-content>
+        <div>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Change name of the task</mat-label>
+                <input matInput placeholder="Give this task another name" [(ngModel)]="task.taskName">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close()">Cancle</button>
+        <button mat-button (click)="saveTaskName()" cdkFocusInitial>Save</button>
+    </div>
+</div>

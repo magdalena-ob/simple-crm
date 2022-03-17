@@ -26,9 +26,7 @@ export class DialogAddTaskComponent implements OnInit {
       .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
         this.allUsers = changes;
-      });
-
-      
+      }); 
   }
 
   saveTask() {
