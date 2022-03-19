@@ -37,19 +37,17 @@
 <mat-card class="mt-32">
     <mat-card-title>Notes</mat-card-title>
     <mat-card-content>
-        <form>
+        <div>
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Leave a note</mat-label>
-                <textarea matInput placeholder="Share your info about this task with your colleagues"></textarea>
+                <textarea matInput placeholder="Share your info about this task with your colleagues" [(ngModel)]="note.message"></textarea>
             </mat-form-field>
-        </form>
+        </div>
         <div class="pin-btn">
             <button mat-raised-button color="primary" (click)="saveNote()">Pin your note</button>
         </div>
-        <mat-list role="list">
-            <mat-list-item [ngStyle]="{'background-color': colors[bgColor]}" role="listitem">Item 1 <mat-icon class="delete-icon"class="delete-icon">delete</mat-icon></mat-list-item>
-            <mat-list-item [ngStyle]="{'background-color': colors[bgColor]}"role="listitem">Item 2 <mat-icon class="delete-icon">delete</mat-icon></mat-list-item>
-            <mat-list-item [ngStyle]="{'background-color': colors[bgColor]}"role="listitem">Item 3 <mat-icon class="delete-icon">delete</mat-icon></mat-list-item>
+        <mat-list role="list" *ngFor="let note of notes">
+            <mat-list-item [ngStyle]="{'background-color': colors[bgColor]}" role="listitem">{{ note.message }}<mat-icon class="delete-icon"class="delete-icon">delete</mat-icon></mat-list-item>
           </mat-list>
     </mat-card-content>
 </mat-card>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { Note } from 'src/models/note.class';
 import { Task } from 'src/models/task.class';
 import { DialogEditTaskInfoComponent } from '../dialog-edit-task-info/dialog-edit-task-info.component';
 import { DialogEditTaskNameComponent } from '../dialog-edit-task-name/dialog-edit-task-name.component';
@@ -16,6 +17,8 @@ export class TaskDetailComponent implements OnInit {
   task: Task = new Task();
   colors = ['#52df9c9e', '#dcb73bab', '#ab8de6b5'];
   bgColor: number = 1;
+  note: Note = new Note();
+  notes: any = [];
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -25,35 +28,61 @@ export class TaskDetailComponent implements OnInit {
       console.log('got task id ', this.taskId);
       this.getTask();
     })
+
+    this.getNotes();
   }
 
   getTask() {
     this.firestore
-    .collection('tasks')
-    .doc(this.taskId)
-    .valueChanges()
-    .subscribe((task: any) => {
-      this.task = new Task(task);
-      console.log('retrived task ', this.task);
-    })
+      .collection('tasks')
+      .doc(this.taskId)
+      .valueChanges()
+      .subscribe((task: any) => {
+        this.task = new Task(task);
+        console.log('retrived task ', this.task);
+      })
   }
 
   saveNote() {
-      this.bgColor = Math.floor(Math.random() * 3);
-      console.log('number is' , this.bgColor);
-    return this.bgColor;
+    //this.bgColor = Math.floor(Math.random() * 3);
+    //console.log('number is' , this.bgColor);
+    //return this.bgColor;
+
+    this.firestore
+      .collection('tasks')
+      .doc(this.taskId)
+      .collection('notes')
+      .add(this.note.toJSON())
+      .then((result: any) => {
+        console.log('finished adding notes ', result);
+        this.note.message = '';
+        //this.bgColor = Math.floor(Math.random() * 3);
+
+      })
   }
 
   editTaskName() {
-      const dialog = this.dialog.open(DialogEditTaskNameComponent);
-      dialog.componentInstance.task = new Task(this.task.toJSON());
-      dialog.componentInstance.taskId = this.taskId;
+    const dialog = this.dialog.open(DialogEditTaskNameComponent);
+    dialog.componentInstance.task = new Task(this.task.toJSON());
+    dialog.componentInstance.taskId = this.taskId;
   }
 
   editTaskInfo() {
     const dialog = this.dialog.open(DialogEditTaskInfoComponent);
     dialog.componentInstance.task = new Task(this.task.toJSON());
     dialog.componentInstance.taskId = this.taskId;
-}
+  }
+
+  getNotes() {
+    this.firestore
+      .collection('tasks')
+      .doc(this.taskId)
+      .collection('notes')
+      .valueChanges()
+      .subscribe((changes) => {
+        this.notes = changes;
+        console.log('notes ', this.notes);
+      })
+  }
 
 }
