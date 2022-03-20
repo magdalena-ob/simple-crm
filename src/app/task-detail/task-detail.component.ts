@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/models/note.class';
 import { Task } from 'src/models/task.class';
 import { DialogEditTaskInfoComponent } from '../dialog-edit-task-info/dialog-edit-task-info.component';
@@ -20,7 +20,7 @@ export class TaskDetailComponent implements OnInit {
   note: Note = new Note();
   notes: any = [];
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog, private router: Router,) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
@@ -78,10 +78,24 @@ export class TaskDetailComponent implements OnInit {
       .collection('tasks')
       .doc(this.taskId)
       .collection('notes')
-      .valueChanges()
+      .valueChanges({idField: 'noteID'})
       .subscribe((changes) => {
         this.notes = changes;
         console.log('notes ', this.notes);
+      })
+  }
+
+  removeNote(index: any) {
+    let currentNoteID = this.notes[index].noteID;
+    console.log('current note Id ', currentNoteID);
+
+    this.firestore
+      .collection('tasks')
+      .doc(this.taskId)
+      .collection('notes')
+      .doc(currentNoteID)
+      .update({
+        active: false
       })
   }
 
