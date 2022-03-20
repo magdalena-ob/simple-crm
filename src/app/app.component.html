@@ -3,9 +3,17 @@
     <div class="logo-container">
       <img class="logo" src="/assets/img/logo.png">
     </div>
+    <div>
+      <button class="close-btn" *ngIf="drawer.mode === 'over'" mat-icon-button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
    <ul class="menu-items">
-     <li routerLink="/"><mat-icon>fact_check</mat-icon>Dashboard</li>
-     <li routerLink="/user"><mat-icon>person_outline</mat-icon>User</li>
+     <li *ngIf="drawer.mode === 'side'" routerLink="/"><mat-icon>fact_check</mat-icon>Dashboard</li>
+     <li *ngIf="drawer.mode === 'side'" routerLink="/user"><mat-icon>person_outline</mat-icon>User</li>
+
+     <li *ngIf="drawer.mode === 'over'" routerLink="/" (click)="drawer.toggle()"><mat-icon>fact_check</mat-icon>Dashboard</li>
+     <li *ngIf="drawer.mode === 'over'" routerLink="/user" (click)="drawer.toggle()"><mat-icon>person_outline</mat-icon>User</li>
    </ul>
   </mat-drawer>
 

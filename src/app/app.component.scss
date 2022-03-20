@@ -1,5 +1,6 @@
 .mat-drawer-container {
     height: 100vh;
+    position: relative;
 }
 
 .sidenav {
@@ -52,4 +53,10 @@ mat-toolbar {
 .logo {
     object-fit: cover;
     height: 48px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 8px;
 }
