@@ -15,8 +15,6 @@ import { DialogEditTaskNameComponent } from '../dialog-edit-task-name/dialog-edi
 export class TaskDetailComponent implements OnInit {
   taskId: any = '';
   task: Task = new Task();
-  colors = ['#52df9c9e', '#dcb73bab', '#ab8de6b5'];
-  bgColor: number = 1;
   note: Note = new Note();
   notes: any = [];
 
@@ -44,10 +42,6 @@ export class TaskDetailComponent implements OnInit {
   }
 
   saveNote() {
-    //this.bgColor = Math.floor(Math.random() * 3);
-    //console.log('number is' , this.bgColor);
-    //return this.bgColor;
-
     this.firestore
       .collection('tasks')
       .doc(this.taskId)
@@ -56,8 +50,6 @@ export class TaskDetailComponent implements OnInit {
       .then((result: any) => {
         console.log('finished adding notes ', result);
         this.note.message = '';
-        //this.bgColor = Math.floor(Math.random() * 3);
-
       })
   }
 

@@ -34,6 +34,12 @@ mat-list-item {
     margin-top: 16px !important;
     border-radius: 4px !important;
     position: relative;
+    /*background: #ab8de6b5 !important;*/
+    background: #52df9c9e !important;
+}
+
+::ng-deep.mat-list-base {
+    padding-top: unset !important;
 }
 
 .delete-icon {

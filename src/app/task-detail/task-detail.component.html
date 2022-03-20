@@ -47,8 +47,8 @@
             <button [disabled]="note.message.length == 0" mat-raised-button color="primary" (click)="saveNote()">Pin your note</button>
         </div>
         <mat-list role="list" *ngFor="let note of notes; let index = index">
-            <mat-list-item *ngIf="note.active" [ngStyle]="{'background-color': colors[bgColor]}" role="listitem">{{ note.message }}
-                <mat-icon class="delete-icon" (click)="removeNote(index)">delete</mat-icon>
+            <mat-list-item *ngIf="note.active" role="listitem">{{ note.message }}
+                <mat-icon class="delete-icon" (click)="removeNote(index)" matTooltip="delete note">delete</mat-icon>
             </mat-list-item>
           </mat-list>
     </mat-card-content>

@@ -9,7 +9,7 @@
        <tr *ngFor="let task of allTasks" [routerLink]="['/dashboard/' + task.taskID]">
             <td>{{task.taskName}}</td>
             <td>{{task.userName}}</td>
-            <td>{{task.status}}</td>
+            <td [ngStyle]="{'color': task.status == 'open' ? '#da1958' : task.status == 'in progress' ? '#7954c1' : task.status == 'done' ? '#41cf8c' : '' }">{{task.status}}</td>
         </tr>
     </table>
 </mat-card>

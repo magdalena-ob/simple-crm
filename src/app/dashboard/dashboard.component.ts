@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
         this.allTasks = changes;
         console.log('all tasks are ', this.allTasks);
       });
-
   }
 
   openDialog() {
