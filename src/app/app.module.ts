@@ -17,7 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -36,6 +36,8 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { MatListModule } from '@angular/material/list';
 import { DialogEditTaskNameComponent } from './dialog-edit-task-name/dialog-edit-task-name.component';
 import { DialogEditTaskInfoComponent } from './dialog-edit-task-info/dialog-edit-task-info.component';
+
+
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { DialogEditTaskInfoComponent } from './dialog-edit-task-info/dialog-edit
     MatCardModule,
     MatMenuModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
