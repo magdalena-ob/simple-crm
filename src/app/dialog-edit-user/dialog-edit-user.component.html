@@ -19,7 +19,9 @@
     <div>
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>E-Mail</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="E-Mail">
+            <input [disabled]="loading" type="email" name="email" [formControl]="email" required
+                [(ngModel)]="user.email" matInput placeholder="E-Mail">
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
     </div>
     <div>

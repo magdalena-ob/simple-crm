@@ -18,7 +18,7 @@ export class DialogAddUserComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, private firestore: AngularFirestore, private fb: FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
   }
