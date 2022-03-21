@@ -39,6 +39,7 @@ import { DialogEditTaskInfoComponent } from './dialog-edit-task-info/dialog-edit
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +80,7 @@ import { DialogEditTaskInfoComponent } from './dialog-edit-task-info/dialog-edit
     MatSelectModule,
     MatListModule,
     ReactiveFormsModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

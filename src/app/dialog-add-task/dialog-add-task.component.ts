@@ -16,6 +16,7 @@ export class DialogAddTaskComponent implements OnInit {
   allUsers: any = [];
   userId: any = '';
   selectedValue!: string;
+  minDate = new Date();
 
 
   constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>, private firestore: AngularFirestore) { }
