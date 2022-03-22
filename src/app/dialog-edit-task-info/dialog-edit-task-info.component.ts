@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Task } from 'src/models/task.class';
 
@@ -19,13 +18,8 @@ export class DialogEditTaskInfoComponent implements OnInit {
   selectedValue!: string;
   minDate = new Date();
   date: any;
- 
- 
-  //serializedDate = new FormControl((new Date()).toISOString());
 
-  constructor(public dialogRef: MatDialogRef<DialogEditTaskInfoComponent>, private firestore: AngularFirestore) { 
-    
-  }
+  constructor(public dialogRef: MatDialogRef<DialogEditTaskInfoComponent>, private firestore: AngularFirestore) {}
 
   ngOnInit(): void {
     this.firestore
@@ -35,16 +29,11 @@ export class DialogEditTaskInfoComponent implements OnInit {
         this.allUsers = changes;
       });
 
-      console.log(' due date' , this.task.dueDate);
-      //console.log('due date is ', new Date(this.task.dueDate).toLocaleString("en-US") );
-      console.log('due date iso string ', new Date(this.task.dueDate).toISOString());
-      this.date = new FormControl(new Date(this.task.dueDate).toISOString());
-      //this.date = new FormControl(new Date(this.task.dueDate).toLocaleString("en-US"));
-     
+    this.setDateValue();
   }
 
   saveTaskInfo() {
-    this.task.dueDate = this.dueDate.getTime();
+    this.task.dueDate = this.date.getTime();
     //this.task.userName = this.selectedValue;
 
     this.firestore
@@ -54,5 +43,12 @@ export class DialogEditTaskInfoComponent implements OnInit {
       .then(() => {
         this.dialogRef.close();
       });
+  }
+
+  setDateValue() {
+    console.log(' due date', this.task.dueDate);
+    console.log('due date iso string ', new Date(this.task.dueDate).toISOString());
+
+    this.date = new Date(this.task.dueDate).toISOString();
   }
 }

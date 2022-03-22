@@ -24,13 +24,11 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Due date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate" [formControl]="date" [value]="date">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="date" >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
-        <!--just for testing-->
-        <div>{{task.dueDate | date: 'dd/MM/YYYY'}}</div>
     </div>
     <div mat-dialog-actions>
         <button mat-button (click)="dialogRef.close()">Cancle</button>
