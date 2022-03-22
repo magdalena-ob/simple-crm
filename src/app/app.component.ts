@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
@@ -14,7 +14,7 @@ export class AppComponent {
     drawer!: MatDrawer;
   
 
-  constructor(private observer: BreakpointObserver) {
+  constructor(private observer: BreakpointObserver, private cd: ChangeDetectorRef) {
 
   }
 
@@ -23,9 +23,11 @@ export class AppComponent {
       if(res.matches) {                         //for mobile
         this.drawer.mode = 'over';
         this.drawer.close();
+        this.cd.detectChanges();
       } else {
         this.drawer.mode = 'side';
         this.drawer.open();
+        this.cd.detectChanges();
       }
     });
   }
