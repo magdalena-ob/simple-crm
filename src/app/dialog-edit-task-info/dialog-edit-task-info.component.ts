@@ -19,7 +19,7 @@ export class DialogEditTaskInfoComponent implements OnInit {
   minDate = new Date();
   date: any;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditTaskInfoComponent>, private firestore: AngularFirestore) {}
+  constructor(public dialogRef: MatDialogRef<DialogEditTaskInfoComponent>, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.firestore
@@ -33,7 +33,10 @@ export class DialogEditTaskInfoComponent implements OnInit {
   }
 
   saveTaskInfo() {
-    this.task.dueDate = this.date.getTime();
+    if (new Date(this.task.dueDate).toISOString() !== this.date) {
+      this.task.dueDate = this.date.getTime();
+    }
+    
     //this.task.userName = this.selectedValue;
 
     this.firestore

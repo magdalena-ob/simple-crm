@@ -17,6 +17,7 @@ export class DialogAddTaskComponent implements OnInit {
   userId: any = '';
   selectedValue!: string;
   minDate = new Date();
+  status: any = 'open';
 
 
   constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>, private firestore: AngularFirestore) { }
@@ -33,6 +34,7 @@ export class DialogAddTaskComponent implements OnInit {
   saveTask() {
     this.task.dueDate = this.dueDate.getTime();
     this.task.userName = this.selectedValue;
+    this.task.status = this.status;
 
     this.firestore
       .collection('tasks')
